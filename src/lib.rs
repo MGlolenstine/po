@@ -1,3 +1,5 @@
+#![warn(clippy::pedantic)]
+
 use std::collections::BTreeMap;
 use std::fmt;
 
@@ -16,7 +18,9 @@ pub struct PoFile{
 }
 
 impl PoFile{
-    /// Creates a new PoFile struct and reads it from a file.
+    /// Creates a new `PoFile` struct and reads it from a file.
+    /// # Errors
+    /// If the path doesn't exist.
     pub fn new(path: &str) -> Result<Self, Box<dyn std::error::Error>>{
         let langs = parser::string_to_langs(path)?;
         Ok(PoFile{
@@ -26,14 +30,18 @@ impl PoFile{
         })
     }
 
-    /// Writes the PoFile into a file specified in `path`
+    /// Writes the `PoFile` into a file specified in `path`
+    /// # Errors
+    /// If it's unable to write to the file
     pub fn write(&self, path: &str) -> Result<(), Box<dyn std::error::Error>>{
         let langs = self.to_string();
         std::fs::write(path, langs)?;
         Ok(())
     }
 
-    /// Updates the file PoFile was created from.
+    /// Updates the file `PoFile` was created from.
+    /// # Errors
+    /// If it's unable to write to the file
     pub fn update(&self) -> Result<(), Box<dyn std::error::Error>>{
         let langs = self.to_string();
         std::fs::write(&self.path, langs)?;
