@@ -1,0 +1,6 @@
+#: src/msgcmp.c:338 src/po-lex.c:699
+#, c-format
+msgid "found %d fatal error"
+msgid_plural "found %d fatal errors"
+msgstr[0] "s'ha trobat %d error fatal"
+msgstr[1] "s'han trobat %d errors fatals"
