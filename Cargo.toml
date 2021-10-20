@@ -1,5 +1,5 @@
 [package]
-name = "po"
+name = "porw"
 authors = ["MGlolenstine <mglolenstine@gmail.com>"]
 license = "Apache-2.0 OR MIT"
 repository = "https://github.com/mglolenstine/po"
